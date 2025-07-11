@@ -1,0 +1,165 @@
+<%layout("/layout/boilerplate") -%>
+
+<style>
+
+  .card-intro{
+    /* border: 1px solid black; */
+    width: 65% !important;
+    margin:2rem auto ;
+    opacity: 0.933434;
+  
+  }
+  .card-title-intro{
+    font-size:29px ;
+  }
+   .card-intro:hover{
+    opacity: 1;
+   }
+  
+  @media(max-width:767px){
+    .heading{
+      font-size: 16px;
+    }
+     .card-title-intro{
+      font-size: 16px;
+     }
+  }
+
+
+  /* Modal container */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Modal box */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+</style>
+
+<!-- signup pop up model -->
+
+<div class="row mt-3 justify-content-center form-container modal" id="signupModal" >
+   
+<div class="col-10 col-md-6 col-lg-6  modal-content ">
+       <span class="close" onclick="closeModal()">&times;</span>
+ 
+<form action="/signup" method="post" class="needs-validation" novalidate>
+    <h3 style="color: white;">Signup on Blogverse</h3>
+    <div class="form">
+  <div class="mb-3">
+    
+    <label for="username" class="form-label">Username</label>
+    <input type="User" class="form-control"  aria-describedby="userHelp" name="username" required>
+    <div id="userHelp" class="form-text">Type your password</div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control"  name="password" required>
+  </div>
+  
+  <button type="submit" class="btn btn-success">Signup</button>
+  <p class="login">Already have an account?&nbsp;<a href="/login">Login</a></p>
+  
+  </div>
+</form>
+</div>
+</div>
+
+
+<!-- website intro -->
+
+<div class="card-intro" style="width: 18rem;">
+  <h2 class="heading" style="color:#3F5A5F; font-weight: 700;">All the coding tips in one place.</h2>
+  <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=retrosupply-jLwVAUtLOAQ-unsplash.jpg" class="card-img-top" >
+  <div class="card-body-intro">
+    <h2 class="card-title-intro">👋 Welcome to Blogverse – Your Coding Companion!</h2>
+    <div class="card-text-intro">
+    <ul>
+      <li>
+       Learn. Share. Grow.
+      </li>
+      <li> Unlock practical coding tips, tools, and tutorials.</li>
+      <li>Post your ideas, get inspired, and earn from the dev community!</li>
+      <li>Start your journey with developers who code, create, and collaborate.</li>
+</ul>
+   
+    </div>
+  
+  </div>
+
+</div>
+
+
+
+
+
+<!-- all post -->
+<div> <h3 style="font-weight: 700; color:#3F5A5F; margin-bottom: 1rem;">All Post</h3></div>
+  <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 ">
+   
+    <% for(let post of allPosts){%>
+      
+       <a href="/post/<%=post.id%>" style="text-decoration: none; color: black;">
+      <div class="card " >  
+
+  <img src="<%= post.image.url %>" alt="Image" class="card-img-top"  />
+
+  <div class="card-body">
+    <h5 class="card-title"><%=post.title%></h5>
+    <p class="card-text"><%=post.content%>  </p>
+
+   
+
+  </div>
+      
+</div>
+</a>
+
+<%}%>
+   
+</div>
+
+
+
+
+<script>
+  window.onload = function () {
+    if (!localStorage.getItem("signupShown")) {
+      document.getElementById("signupModal").style.display = "block";
+      localStorage.setItem("signupShown", "true");
+    }
+  };
+
+  function closeModal() {
+    document.getElementById("signupModal").style.display = "none";
+  }
+</script>
+

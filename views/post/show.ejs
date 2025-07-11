@@ -1,0 +1,45 @@
+<% layout("/layout/boilerplate") -%>
+
+
+<style>
+    .card{
+    
+    width: 60%;
+    margin-top: 2rem;
+   
+    }
+  .btns{
+    display: flex;
+  }
+</style>
+
+
+
+
+
+
+
+<div class="row mt-3">
+<div class="d-flex justify-content-center">
+   
+      <div class="card" >
+  <img src="<%=post.image.url%>" class="card-img-top" alt="post_img" style="height: 20rem;">
+  <div class="card-body">
+     <p class="card-text">Owned by: <%= post.owner ? post.owner.username : 'Unknown' %></p>
+    <h5 class="card-title"><%=post.title%></h5>
+      
+    <p class=""><%=post.content%>  </p>
+  </div>
+<% if (currUser && post.owner && post.owner._id.equals(currUser._id)) { %>
+  <div class="btns mb-2">
+    <a href="/post/<%= post.id %>/edit" class="btn btn-dark add-btn col-1 offset-3" style="width: fit-content;">Edit</a>
+   <form method="post" action="/post/<%=post._id%>?_method=DELETE">
+            <button class="btn btn-dark add-btn  offset-5 ">Delete</button>
+        </form>
+    </div>
+ <% }%>
+</div>
+
+</div>
+
+</div>

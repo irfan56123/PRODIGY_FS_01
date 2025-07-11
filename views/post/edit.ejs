@@ -1,0 +1,86 @@
+ <% layout("/layout/boilerplate")%>
+<style>
+      body{
+        background-color: #0f172a;
+    }
+      .form-container {
+    position: relative;
+    margin-top: 5rem;
+  }
+
+  .bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay with 40% opacity */
+  z-index: 0;
+}
+  
+  .form{
+        border: 1px solid white;
+       margin-top: 2rem;
+        padding: 2rem;
+      
+        color: white;
+        margin-bottom: 2rem;
+          border-radius: 12px;
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.5);
+
+    }
+</style>
+
+ <div class="bg-overlay"></div>
+<div class="row mt-3 justify-content-center form-container">
+   
+<div class="col-10 col-md-6 col-lg-6 ">
+   
+    <form method="post" action="/post/<%= post._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+       <h3 style="color: white;">Edit Your Post</h3>
+      <div class="form">
+        <div class="mb-3">
+            <label for="title" >Title</label>
+            <input name="title"  type="text" class="form-control" value="<%=post.title%>" required>
+            <div class="valid-feedback">
+                Title Looks good!
+              </div> 
+        </div>
+       <div class="mb-3">
+        <label for="content" >Content</label>
+        <textarea name="content"  class="form-control"  required><%=post.content%></textarea>
+        <div class="invalid-feedback">
+            Please Enter content!
+          </div>
+       </div>
+        <!-- <div class="mb-3">
+            <label for="image" >Image link</label>
+            <input name="listing[image]" placeholder="enter image URL/link" type="text" class="form-control">
+
+        </div> -->
+
+          <div class="mb-3">
+                <label for="image">Original Image</label>
+                <img src="<%=  originalImgUrl %>" style="width: 20%;" >
+            </div>
+
+         <div class="mb-3">
+            <label for="image" >Upload Image</label>
+           <input name="image"  type="file" class="form-control" value=<%="originalImgUrl"%> required>
+
+
+
+
+
+
+        </div>
+   
+     
+       <div class="mb-3">
+        <button class="btn btn-dark add-btn">Edit</button>
+    </div>
+</div>
+    </form>
+     </div>
+  
+</div>

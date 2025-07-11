@@ -1,0 +1,78 @@
+<% layout("/layout/boilerplate")%>
+
+
+<style>
+    body{
+    background: url('https://images.unsplash.com/photo-1633886038302-9710437f6ca2?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=shubham-dhage-XG4vGhzqh4c-unsplash.jpg') no-repeat center center ;
+    background-size: cover;
+      position: relative;
+    min-height: 100vh;
+  }
+
+ .bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* dark overlay with 40% opacity */
+  z-index: 0;
+}
+.form-container {
+    position: relative;
+    margin-top: 5rem;
+    z-index: 1;
+  }
+
+
+    .form{
+        border: 1px solid white;
+       margin-top: 2rem;
+        padding: 2rem;
+     
+        color: white;
+        margin-bottom: 5rem;
+         border-radius: 12px;
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.5);
+
+    }
+
+    .btn{
+        width: 100%;
+    }
+    .signup{
+        display: flex; 
+        font-size: 16px; 
+        align-items: center;
+         margin-top: 1rem;
+    }
+</style>
+
+
+<div class="bg-overlay"></div>
+<div class="row mt-3 justify-content-center form-container">
+   
+<div class="col-10 col-md-6 col-lg-6 ">
+
+<form action="/login" method="post" class="needs-validation" novalidate>
+    <h4 style="color: white;">Login on Blogverse</h4> 
+<div class="form">
+  <div class="mb-3">
+   
+    <label for="username" class="form-label">Username</label>
+    <input type="User" class="form-control"  aria-describedby="userHelp" name="username" required>
+    <div id="userHelp" class="form-text">Type your Username</div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class=" form-label">Password</label>
+    <input type="password" class=" form-control"  name="password" required>
+     <div id="userHelp" class="form-text">Type your Password</div>
+  </div>
+  
+  <button type="submit" class="btn btn-success">Login</button>
+<p class="signup" >Don't have an account?  &nbsp; <a href="/signup">Signup</a></p>
+  </div>
+</form>
+</div>
+
+</div>
