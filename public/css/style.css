@@ -16,6 +16,7 @@ body{
 .navbar{
     /* height: 4rem; */
     background-color:rgb(27, 26, 26);
+    width: 100%;
    
    
 }
@@ -72,7 +73,36 @@ opacity: 0.9;
     
 }
 
-
+@media(max-width:767px){
+  body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+      overflow-x: hidden;
+  }
+   .card-text{
+     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+   }
+   .card-title{
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+    .card-img-top{
+    height: 15rem;
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    
+}
+.navbar{
+  width: 100%;
+}
+}
 
 
 /* footer */
